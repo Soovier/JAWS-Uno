@@ -1,0 +1,7 @@
+class CLLNode {
+
+}
+
+class CLL {
+
+}
