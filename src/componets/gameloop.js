@@ -57,6 +57,9 @@ class Deck {
  * For state, we could say that they could be close to uno. isUno?
  * Additionally, a user can be extended to a class called AI user.
  * The AI User will have some overrides to play automatically.
+ * 
+ * @author jdeanes0
+ * @version 10/30/23
  */
 class User {
     /**
@@ -66,6 +69,7 @@ class User {
     constructor(hand, address) {
         this.address = address
         this.hand = hand
+        this.isAI = false // different logic will exist if it is an AI player. TODO: Implement.
         this.isUno = false // This should never need to start as true.
     }
 
@@ -94,18 +98,35 @@ class User {
  * Is this actually a queue? NO!
  * 
  * ITS A CLL! WATCH OUT!
+ * 
+ * I like this class because it acts similarly to how I imagine an API would work.
+ * I think my abstraction work here is goated.
+ * 
+ * @author jdeanes0
+ * @version 10/30/23
  */
 class UserLoop {
 
     /**
-     * @param {number} numplayers
+     * Takes an array of players to create a CLL with extra features.
+     * 
+     * @param {User[]} players
      */
-    constructor(numplayers) {
-        this.numplayers = numplayers
+    constructor(players) {
+        this.players = new CLL(players)
+    }
+
+    reverse() {
+        this.players.reverse()
+    }
+
+    skip() {
+        this.players.rotate()
+        this.players.rotate()
     }
 
     march() {
-
+        this.players.rotate()
     }
 }
 
@@ -113,21 +134,24 @@ class UserLoop {
  * Handles initial connection of all users, instantiates the deck, initially deals cards to users.
  * 
  * In essence, this function takes care of all functions that set up the game and do not require user input.
+ * Connects the players and add their connection information to a list of type User
+ * 
+ * @return 
  */
 function load() {
 
+    return playerloop
 }
 
 /**
  * Begin a forever loop to handle going around the users.
- * @param {number} numplayers
+ * @param {UserLoop} loop
  */
-function loop(numplayers) {
-    let currentUsers = new UserLoop(numplayers)
+function loop(loop) {
     while (true) {
 
 
-        currentUsers.march()
+        loop.march()
     }
 }
 
@@ -138,7 +162,6 @@ function loop(numplayers) {
 function main() {
     load() // Unsure if this returns anything as of yet
 
-    let numplayers = 4
     loop(numplayers)
 }
 
