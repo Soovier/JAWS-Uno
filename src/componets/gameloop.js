@@ -4,6 +4,11 @@ The main loop of gameplay functions for an UNO Game.
 As it stands, there will be quite a few objects. I'm not sure how this will communicate with the game clients,
 but I have 2 weeks to figure that out.
 
+So. This communicates with the clients as well. Unfortunately, I think that means that I will need to rename this to index.
+
+The main loop will iterate through the users, and with that, the users will match the cards on their end to reduce
+connections and server traffic.
+
 @author jdeanes0
 @version 10/25/23
 */
@@ -20,14 +25,6 @@ class Card {
     constructor(type, color) {
         this.type = type;
         this.color = color;
-    }
-
-    /**
-     * @param {Card} foreignCard
-     */
-    compareTo(foreignCard) {
-        let isStackable = false
-
     }
 }
 
@@ -64,8 +61,10 @@ class Deck {
 class User {
     /**
      * @param {Hand} hand
+     * @param {any} address
      */
-    constructor(hand) {
+    constructor(hand, address) {
+        this.address = address
         this.hand = hand
         this.isUno = false // This should never need to start as true.
     }
@@ -108,11 +107,6 @@ class UserLoop {
     march() {
 
     }
-    
-    wrap() {
-        
-    }
-
 }
 
 /**
@@ -132,6 +126,8 @@ function loop(numplayers) {
     let currentUsers = new UserLoop(numplayers)
     while (true) {
 
+
+        currentUsers.march()
     }
 }
 
