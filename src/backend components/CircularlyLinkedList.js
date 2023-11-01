@@ -86,6 +86,7 @@ class CLL {
     reverse() {
         if (this.isReversed) {
             this.isReversed = true
+            console.log("User loop is already reversed. Bug?")
         } else {
             this.isReversed = false
         }

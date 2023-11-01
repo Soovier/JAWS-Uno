@@ -118,6 +118,7 @@ class UserLoop {
 
     reverse() {
         this.players.reverse()
+        this.march()
     }
 
     skip() {
@@ -140,7 +141,8 @@ class UserLoop {
  */
 function load() {
 
-    return playerloop
+    // return playerloop
+    return null
 }
 
 /**
@@ -149,9 +151,41 @@ function load() {
  */
 function loop(loop) {
     while (true) {
+        var user
+        var user_has_won = false
+        var card_case = "normal"
+
+        // Wait for user's card choice (networking)
 
 
-        loop.march()
+
+
+
+
+        // If a plyer's card count is 0, end the game
+        if (user_has_won) {
+            console.log("User " + user + " has won the game!")
+            break;
+        }
+
+        // End-of-turn logic.
+        switch (card_case) {
+            case "normal":
+                loop.march()
+                break;
+
+            case "reverse":
+                loop.reverse()
+                break;
+
+            case "skip":
+                loop.skip()
+                break;
+        
+            default:
+                console.log("A case was not matched; defaulting to regular behavior. Bug ?s")
+                break;
+        }
     }
 }
 
@@ -162,7 +196,8 @@ function loop(loop) {
 function main() {
     load() // Unsure if this returns anything as of yet
 
-    loop(numplayers)
+    // loop(numplayers)
+
 }
 
 main()
