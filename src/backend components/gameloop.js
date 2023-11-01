@@ -1,4 +1,4 @@
-/* 
+/**
 The main loop of gameplay functions for an UNO Game. 
 
 As it stands, there will be quite a few objects. I'm not sure how this will communicate with the game clients,
@@ -10,7 +10,7 @@ The main loop will iterate through the users, and with that, the users will matc
 connections and server traffic.
 
 @author jdeanes0
-@version 10/25/23
+@version 11/1/23
 */
 
 /**
@@ -40,16 +40,17 @@ class Hand {
     }
 }
 
-class Deck {
+class Deck extends Hand {
     /*Essentially acts as a stack for the cards to be given to players.
     Players will also draw from this deck at the beginning of the game.*/
     /**
-     * @param {Hand} hand
+     * @param {Card[]} arrofcards
      */
-    constructor(hand) {
-        this.hand = hand
-        this.count = hand.amount // number of cards in the deck
+    constructor(arrofcards) {
+        super(arrofcards)
     }
+
+
 }
 
 /**
