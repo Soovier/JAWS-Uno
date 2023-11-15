@@ -1,51 +1,101 @@
-id type color
-0 zero red
-1 one red
-2 one red
-3 two red
-4 two red
-5 three red
-6 three red
-7 four red
-8 four red
-9 five red
-10 five red
-11 six red
-12 six red
-13 seven red
-14 seven red
-15 eight red
-16 eight red
-17 nine red
-18 nine red
-19 skip red
-20 skip red
-21 reverse red
-22 reverse red
-23 plustwo red
-24 plustwo red
-25 zero yellow
-26 one yellow
-27 one yellow
-28 two yellow
-29 two yellow
-30 three yellow
-31 three yellow
-32 four yellow
-33 four yellow
-34 five yellow
-35 five yellow
-36 six yellow
-37 six yellow
-38 seven yellow
-39 seven yellow
-40 eight yellow
-41 eight yellow
-42 nine yellow
-43 nine yellow
-44 skip yellow
-45 skip yellow
-46 reverse yellow
-47 reverse yellow
-48 plustwo yellow
-49 plustwo yellow
+blue 0
+blue 1
+blue 1
+blue 2
+blue 2
+blue 3
+blue 3
+blue 4
+blue 4
+blue 5
+blue 5
+blue 6
+blue 6
+blue 7
+blue 7
+blue 8
+blue 8
+blue 9
+blue 9
+blue PlusTwo
+blue PlusTwo
+blue Reverse
+blue Reverse
+blue Skip
+blue Skip
+green 0
+green 1
+green 1
+green 2
+green 2
+green 3
+green 3
+green 4
+green 4
+green 5
+green 5
+green 6
+green 6
+green 7
+green 7
+green 8
+green 8
+green 9
+green 9
+green PlusTwo
+green PlusTwo
+green Reverse
+green Reverse
+green Skip
+green Skip
+red 0
+red 1
+red 1
+red 2
+red 2
+red 3
+red 3
+red 4
+red 4
+red 5
+red 5
+red 6
+red 6
+red 7
+red 7
+red 8
+red 8
+red 9
+red 9
+red PlusTwo
+red PlusTwo
+red Reverse
+red Reverse
+red Skip
+red Skip
+yellow 0
+yellow 1
+yellow 1
+yellow 2
+yellow 2
+yellow 3
+yellow 3
+yellow 4
+yellow 4
+yellow 5
+yellow 5
+yellow 6
+yellow 6
+yellow 7
+yellow 7
+yellow 8
+yellow 8
+yellow 9
+yellow 9
+yellow PlusTwo
+yellow PlusTwo
+yellow Reverse
+yellow Reverse
+yellow Skip
+yellow Skip
+none 
