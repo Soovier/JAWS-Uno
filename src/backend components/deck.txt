@@ -98,4 +98,11 @@ yellow Reverse
 yellow Reverse
 yellow Skip
 yellow Skip
-none 
+none wild
+none wild
+none wild
+none wild
+none wildFour
+none wildFour
+none wildFour
+none wildFour
