@@ -21,7 +21,7 @@
 
 <style>
   body {
-    background-color: rgb(143, 54, 54);
+    background-color: rgb(99, 161, 184);
   }
 
   .creator {
