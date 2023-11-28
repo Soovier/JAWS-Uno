@@ -2,11 +2,13 @@
   function makeGame() {
     alert("GAME BEING MADE");
   }
+  import JawsUnoMain from "$lib/JawsUnoMain.png";
 </script>
 
 <body>
   <div class="main-back">
     <h1 class="title">Jaws-Uno-Game</h1>
+    <img class="JawsPicture" src={JawsUnoMain} alt="JawsLogo" />
     <h3 class="title-display">Please Enter Your Game ID</h3>
     <input class="ID-Enter" type="text" />
   </div>
@@ -29,6 +31,18 @@
     align-items: flex-end;
     justify-content: center;
     gap: 2em;
+  }
+
+  .JawsPicture {
+    max-width: 400px;
+    margin-bottom: -150px;
+    border-radius: 30px;
+    transition: all 1s ease-in-out;
+  }
+
+  .JawsPicture:hover {
+    object-position: -75px;
+    max-width: 500px;
   }
 
   .creator button {
