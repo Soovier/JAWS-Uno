@@ -35,27 +35,12 @@
   function pickCards() {
     const keys = Array.from(hashMap.keys());
 
-    // Shuffle algorithm
-    for (let i = keys.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [keys[i], keys[j]] = [keys[j], keys[i]];
-    }
-
     // Take 7 random keys
     const picked = [];
 
-    for (var i: number = 0; i < 7; i++);
-    {
-      console.log(hashMap.get(i));
+    for (let i = 0; i < 7; i++) {
+      console.log("Testing: " + hashMap.get(i)?.Color);
     }
-    const card = keys[Math.floor(Math.random() * keys.length)];
-    console.log(keys[Math.floor(Math.random() * (keys.length - 2) + 1)]);
-
-    if (typeof card === "undefined") {
-      Error("Couldn't Create Cards");
-    }
-
-    picked.push(card);
   }
   // console.log("PICKED ARRAY:" + picked);
   // console.log(hashMap.get(picked[1]));
@@ -107,7 +92,7 @@
     // Map population logic here
 
     hashMap.forEach((value, key) => {
-      console.log(`Key: ${key}, Value: ${value}`);
+      // console.log(`Key: ${key}, Value: ${value}`);
     });
     console.log(hashMap.size);
   });
