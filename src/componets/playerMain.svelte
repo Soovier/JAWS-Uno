@@ -44,25 +44,21 @@
     // Take 7 random keys
     const picked = [];
 
-    for (var i: number = 0; i < 7; i++); {
+    for (var i: number = 0; i < 7; i++);
+    {
       console.log(hashMap.get(i));
-      
     }
-      const card = keys[Math.floor(Math.random() * keys.length)];
-      console.log(keys[Math.floor(Math.random() * (keys.length - 2) + 1)]);
+    const card = keys[Math.floor(Math.random() * keys.length)];
+    console.log(keys[Math.floor(Math.random() * (keys.length - 2) + 1)]);
 
-      if (typeof card === "undefined") {
-        Error("Couldn't Create Cards");
-        break;
-      }
-
-      picked.push(card);
+    if (typeof card === "undefined") {
+      Error("Couldn't Create Cards");
     }
-    // console.log("PICKED ARRAY:" + picked);
-    // console.log(hashMap.get(picked[1]));
 
-    return picked;
+    picked.push(card);
   }
+  // console.log("PICKED ARRAY:" + picked);
+  // console.log(hashMap.get(picked[1]));
 
   function addCardAttributes(cardName: string, locate: string) {
     let cardHolder: string = cardName;
@@ -96,9 +92,9 @@
         compressedName.includes("Wild") ||
         compressedName.includes("Skip")
       ) {
-        console.log("Skipped Important Cards");
+        // console.log("Skipped Important Cards");
       } else {
-        console.log("Added Regular Cards");
+        // console.log("Added Regular Cards");
         hashMap.set(
           counter++,
           addCardAttributes(compressedName.slice(0, -4), fileName)
@@ -113,7 +109,7 @@
     hashMap.forEach((value, key) => {
       console.log(`Key: ${key}, Value: ${value}`);
     });
-    // console.log(hashMap.size);
+    console.log(hashMap.size);
   });
 
   fs.readdir(unoCardsPath, (err, files) => {
