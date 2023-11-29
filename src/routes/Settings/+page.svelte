@@ -1,7 +1,9 @@
 <script>
   import Settingpage from "../../componets/settingpage.svelte";
+  import PlayerMain from "../../componets/playerMain.svelte";
 </script>
 
 <div>
-  <Settingpage />
+  <!-- <Settingpage /> -->
+  <PlayerMain></PlayerMain>
 </div>
