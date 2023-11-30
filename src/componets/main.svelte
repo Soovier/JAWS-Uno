@@ -3,6 +3,7 @@
     alert("GAME BEING MADE");
   }
   import JawsUnoMain from "$lib/JawsUnoMain.png";
+  import Waves from "../lib/Waves.png";
 </script>
 
 <body>
@@ -24,6 +25,15 @@
 <style>
   body {
     background-color: rgb(99, 161, 184);
+  }
+
+  /* Apply image border to the entire website */
+  body {
+    margin: 0;
+    padding: 0;
+    border: 100px solid black; /* Set the border width */
+    box-sizing: border-box; /* Ensures the border width is included in the element's total width and height */
+    border-image: url("$lib/Waves.png") 200 round; /* Adjust the path to your image */
   }
 
   .creator {

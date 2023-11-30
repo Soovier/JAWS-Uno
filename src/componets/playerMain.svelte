@@ -103,11 +103,27 @@
 </script>
 
 <body>
-  <p>Hello</p>
+  <li class="boxplay center">
+    <div class="play">1</div>
+    <div class="play">2</div>
+    <div class="play">3</div>
+    <div class="play">4</div>
+  </li>
 </body>
 
 <style>
-  p {
-    background-color: rgb(40, 138, 147) (0, 234, 255);
+  .boxplay {
+    list-style: none;
+    color: brown;
+  }
+
+  .play {
+    width: 350px;
+    height: 200px;
+    background-color: red;
+  }
+
+  .center {
+    display: flex;
   }
 </style>
