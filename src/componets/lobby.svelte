@@ -18,7 +18,11 @@
       <p class="Title3">Invite your friends to play with you:</p>
     </div>
 
-    <div class="playerSection"></div>
+    <div class="playerSection">
+      <a class="startGameMAIN" href="Game">
+        <button class="startGame"> Start Game </button>
+      </a>
+    </div>
   </div>
 </body>
 
@@ -31,6 +35,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .playerSection {
+    background-color: green;
+    width: 800px;
+    height: 500px;
+    margin-left: 700px;
+    border-radius: 35px;
+    margin-top: -10px;
+    border-color: red;
+  }
+
+  .startGameMAIN {
+    background-color: rgb(121, 83, 83);
+    width: 200px;
+    height: 150px;
+    /* width: px; */
+    /* max-height: 50px; */
+  }
+
+  .startGame {
+    border: none;
+    margin-left: 300px;
+    margin-top: 440px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20%;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 400px;
+    color: black;
   }
 
   .Title3 {
