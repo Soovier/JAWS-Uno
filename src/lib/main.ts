@@ -85,16 +85,17 @@ export class Game {
     private _players: Player[];
     private _turn: number;
     private _deck: Deck;
-    private _played: Deck;
+    private _played: Card[];
     constructor() {
         this._players = [];
         this._deck = new Deck(1);
-        this._played = new Deck(0);
+        this._played = [];
         // Game has not started
         this._turn = -1;
     }
     get players() { return this._players; }
     get turn() { return this._players[this._turn]; }
+    get lastCard() { return this._played[this._played.length - 1] }
     getPlayer(player: number) {
         return this.players[player];
     }
@@ -117,11 +118,13 @@ export class Game {
     play(player: number, card: number) {
         let p = this.getPlayer(player);
         let c = p.removeCard(card);
+        console.log(c);
+        if (!c.canPlay(this.lastCard)) console.log("Can't Play!");
         this.nextTurn();
     }
     start() {
         this.distribute();
-        this._played.cards[0] = this._deck.getCard();
+        this._played[0] = this._deck.getCard();
         this.nextTurn();
     }
     private distribute() {
