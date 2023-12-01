@@ -20,7 +20,6 @@ export class Card {
         if (this.type != CARD_TYPES.NORMAL && this.type == other.type) return true;
         return false;
     }
-
 };
 
 export class Deck {
