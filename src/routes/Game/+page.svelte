@@ -1,9 +1,10 @@
 <script>
+  import PlayerMain from "../../componets/playerMain.svelte";
 </script>
 
-<div>
-  <p>HELLO JUST TESTING</p>
-</div>
+<body>
+  <PlayerMain></PlayerMain>
+</body>
 
 <style>
 </style>
