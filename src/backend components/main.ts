@@ -1,17 +1,18 @@
 export enum CARD_TYPES {
-    NORMAL,
-    REVERSE,
-    PLUS_2,
-    PLUS_4,
-    PICK_COLOR,
-    SKIP,
+    NORMAL = "Normal",
+    REVERSE = "REVerse",
+    PLUS_2 = "+2",
+    PLUS_4 = "+4",
+    PICK_COLOR = "pick",
+    SKIP = "skip",
 };
 export enum CARD_COLORS {
-    RED, GREEN, BLUE, YELLOW, NONE
+    RED = "red", GREEN = "green", BLUE = "blue", YELLOW = "yellow", NONE = "none"
 }
 export class Card {
     constructor(public readonly color: CARD_COLORS, public readonly type: CARD_TYPES, public readonly number: number = 0) {
     };
+
 };
 
 export class Deck {
