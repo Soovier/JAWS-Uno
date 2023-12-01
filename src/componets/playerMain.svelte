@@ -1,5 +1,9 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
+	import * as cards from "../backend components/main";
+	let deck = new cards.Deck();
+	let cardss = deck.cards;
+	console.log(cardss);
 </script>
 
 <body>

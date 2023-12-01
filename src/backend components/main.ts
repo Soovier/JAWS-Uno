@@ -12,15 +12,14 @@ export enum CARD_COLORS {
 export class Card {
     constructor(public readonly color: CARD_COLORS, public readonly type: CARD_TYPES, public readonly number: number = 0) {
     };
-
-}
+};
 
 export class Deck {
-    deck: Card[];
+    private _deck: Card[];
     constructor() {
-        this.deck = [];
+        this._deck = [];
         for (var i = 0; i < 4; i++) {
-            this.deck.push(new Card(CARD_COLORS.BLUE, CARD_TYPES.NORMAL, i));
+            this._deck.push(new Card(CARD_COLORS.BLUE, CARD_TYPES.NORMAL, i));
         }
         this.createColors(CARD_COLORS.BLUE);
         this.createColors(CARD_COLORS.BLUE);
@@ -31,32 +30,35 @@ export class Deck {
         this.createColors(CARD_COLORS.YELLOW);
         this.createColors(CARD_COLORS.YELLOW);
         for (let index = 0; index < 4; index++) {
-            this.deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PLUS_4));
-            this.deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PICK_COLOR));
+            this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PLUS_4));
+            this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PICK_COLOR));
         }
     }
+    get cards() { return this._deck; };
     createColors(color: CARD_COLORS) {
         for (var i = 1; i <= 9; i++) {
-            this.deck.push(new Card(color, CARD_TYPES.NORMAL, i));
+            this._deck.push(new Card(color, CARD_TYPES.NORMAL, i));
         }
-        this.deck.push(new Card(color, CARD_TYPES.REVERSE));
-        this.deck.push(new Card(color, CARD_TYPES.PLUS_2));
-        this.deck.push(new Card(color, CARD_TYPES.SKIP));
+        this._deck.push(new Card(color, CARD_TYPES.REVERSE));
+        this._deck.push(new Card(color, CARD_TYPES.PLUS_2));
+        this._deck.push(new Card(color, CARD_TYPES.SKIP));
     }
 }
 
 export class Player {
-    cards: Card[];
+    private _cards: Card[];
     constructor() {
-        this.cards = [];
+        this._cards = [];
     }
+    get cards() { return this._cards; }
 }
 
 export class Game {
-    players: Player[];
-    deck: Deck;
+    private _players: Player[];
+    private _deck: Deck;
     constructor() {
-        this.players = [];
-        this.deck = new Deck();
+        this._players = [];
+        this._deck = new Deck();
     }
+    get players() { return this._players; }
 }
