@@ -54,8 +54,7 @@ export class Deck {
     getCard() {
         const rand = Math.floor(Math.random() * (this._deck.length - 1));
         const card = this._deck[rand];
-        const temp = this._deck.pop() as Card;
-        this._deck[rand] = temp;
+        this._deck[rand] = this._deck.pop() as Card;
         return card;
     }
 }
@@ -74,7 +73,9 @@ export class Player {
         return this.cards.length == 0;
     }
     removeCard(i: number) {
-        return this.cards.splice(i, 1)[0];
+        const card = this.cards[i];
+        this.cards[i] = this.cards.pop() as Card;
+        return card;
     }
 }
 
