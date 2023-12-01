@@ -13,6 +13,13 @@ export enum CARD_COLORS {
 export class Card {
     constructor(public readonly color: CARD_COLORS, public readonly type: CARD_TYPES, public readonly number: number = -1) {
     };
+    canPlay(other: Card) {
+        if (this.color == CARD_COLORS.NONE) return true;
+        if (this.color == other.color) return true;
+        if (this.number != -1 && this.number == other.number) return true;
+        if (this.type != CARD_TYPES.NORMAL && this.type == other.type) return true;
+        return false;
+    }
 
 };
 
@@ -110,7 +117,6 @@ export class Game {
     play(player: number, card: number) {
         let p = this.getPlayer(player);
         let c = p.removeCard(card);
-        console.log(c);
         this.nextTurn();
     }
     start() {
