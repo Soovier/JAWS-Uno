@@ -44,3 +44,19 @@ export class Deck {
         this.deck.push(new Card(color, CARD_TYPES.SKIP));
     }
 }
+
+export class Player {
+    cards: Card[];
+    constructor() {
+        this.cards = [];
+    }
+}
+
+export class Game {
+    players: Player[];
+    deck: Deck;
+    constructor() {
+        this.players = [];
+        this.deck = new Deck();
+    }
+}
