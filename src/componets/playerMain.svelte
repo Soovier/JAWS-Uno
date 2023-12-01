@@ -1,9 +1,11 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
-	import * as cards from "../backend components/main";
-	let deck = new cards.Deck();
-	let cardss = deck.cards;
-	console.log(cardss);
+	import * as cards from "$lib/main";
+	let game = new cards.Game();
+	game.addPlayer();
+	game.addPlayer();
+	game.start();
+	console.log(game);
 </script>
 
 <body>
