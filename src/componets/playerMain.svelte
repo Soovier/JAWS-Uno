@@ -2,8 +2,8 @@
 <script lang="ts">
 	import * as cards from "$lib/main";
 	let game = new cards.Game();
-	game.addPlayer();
-	game.addPlayer();
+	game.addPlayer("Stephen");
+	game.addPlayer("Owen");
 	game.start();
 	console.log(game);
 	game.play(0, 0);

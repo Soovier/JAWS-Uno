@@ -61,9 +61,7 @@ export class Deck {
 }
 
 export class Player {
-    private _cards: Card[];
-    constructor() {
-        this._cards = [];
+    constructor(public readonly name: string, private _cards: Card[] = []) {
     }
     get cards() { return this._cards; }
     getCard(i: number) {
@@ -98,8 +96,8 @@ export class Game {
     getPlayer(player: number) {
         return this.players[player];
     }
-    addPlayer() {
-        this._players.push(new Player());
+    addPlayer(name: string) {
+        this._players.push(new Player(name));
     }
     nextTurn() {
         this._turn++;
