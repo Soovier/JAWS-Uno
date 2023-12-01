@@ -1,10 +1,5 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
-	import { onMount } from "svelte";
-	import * as fs from "fs";
-	import * as path from "path";
-	import { error } from "@sveltejs/kit";
-	import bluecard0 from "../UnoCards/blue0.png";
 </script>
 
 <body>
