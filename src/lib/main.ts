@@ -115,7 +115,7 @@ export class Game {
             this._turn++;
         if (this._turn >= this._players.length)
             this._turn = 0;
-        if (this._turn == -1) this._turn = this._players.length - 1;
+        if (this._turn < 0) this._turn = this._players.length - 1;
         return this.playing;
     }
     isDone() {
