@@ -6,7 +6,7 @@
 	game.addPlayer("Owen");
 	game.start();
 	console.log(game);
-	game.play(0, 0);
+	game.play(game.turn, 0);
 </script>
 
 <body>

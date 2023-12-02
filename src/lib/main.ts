@@ -52,10 +52,15 @@ export class Deck {
         this._deck.push(new Card(color, CARD_TYPES.SKIP));
     }
     getCard() {
+        if (this.cards.length == 1)
+            return this._deck.pop();
         const rand = Math.floor(Math.random() * (this._deck.length - 1));
         const card = this._deck[rand];
         this._deck[rand] = this._deck.pop() as Card;
         return card;
+    }
+    isEmpty() {
+        return this._deck.length == 0;
     }
 }
 
@@ -84,15 +89,18 @@ export class Game {
     private _turn: number;
     private _deck: Deck;
     private _played: Card[];
+    private _isReverse: boolean;
     constructor() {
         this._players = [];
         this._deck = new Deck(1);
         this._played = [];
         // Game has not started
         this._turn = -1;
+        this._isReverse = false;
     }
     get players() { return this._players; }
-    get turn() { return this._players[this._turn]; }
+    get turn() { return this._turn; }
+    get playing() { return this._players[this._turn]; }
     get lastCard() { return this._played[this._played.length - 1] }
     getPlayer(player: number) {
         return this.players[player];
@@ -101,10 +109,14 @@ export class Game {
         this._players.push(new Player(name));
     }
     nextTurn() {
-        this._turn++;
+        if (this._isReverse)
+            this._turn--;
+        else
+            this._turn++;
         if (this._turn >= this._players.length)
             this._turn = 0;
-        return this.turn;
+        if (this._turn == -1) this._turn = this._players.length - 1;
+        return this.playing;
     }
     isDone() {
         for (let index = 0; index < this.players.length; index++) {
@@ -116,20 +128,41 @@ export class Game {
     play(player: number, card: number) {
         let p = this.getPlayer(player);
         let c = p.removeCard(card);
-        console.log(c);
         if (!c.canPlay(this.lastCard)) console.log("Can't Play!");
-        this.nextTurn();
+        this.playCard(c, p);
+    }
+    private playCard(c: Card, player: Player) {
+        console.log(c);
+        this._played.push(c);
+        if (c.type == CARD_TYPES.REVERSE) this._isReverse = !this._isReverse;
+        let next = this.nextTurn();
+        switch (c.type) {
+            case CARD_TYPES.PLUS_4:
+                next.addCard(this.getCardFromDeck());
+                next.addCard(this.getCardFromDeck());
+            case CARD_TYPES.PLUS_2:
+                next.addCard(this.getCardFromDeck());
+                next.addCard(this.getCardFromDeck());
+            case CARD_TYPES.SKIP:
+                this.nextTurn();
+        }
+    }
+    private getCardFromDeck() {
+        if (this._deck.isEmpty()) {
+            this._deck.cards.concat(this._played);
+            this._played = [this._played[this._played.length - 1]]
+        }
+        return this._deck.getCard() as Card;
     }
     start() {
         this.distribute();
-        this._played[0] = this._deck.getCard();
-        this.nextTurn();
+        this.playCard(this.getCardFromDeck(), this._players[0]);
     }
     private distribute() {
         for (let index = 0; index < this._players.length; index++) {
             let element = this._players[index];
             for (let i = 0; i < 7; i++) {
-                element.addCard(this._deck.getCard());
+                element.addCard(this.getCardFromDeck());
             }
         }
     }
