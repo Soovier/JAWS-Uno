@@ -8,7 +8,7 @@
 
 <body>
   <div class="main-back">
-    <h1 class="title">Jaws-Uno-Game</h1>
+    <br>
     <img class="JawsPicture" src={JawsUnoMain} alt="JawsLogo" />
     <h3 class="title-display">Please Enter Your Game ID</h3>
     <input class="ID-Enter" type="text" />
@@ -24,17 +24,10 @@
 
 <style>
   body {
-    background-color: rgb(99, 161, 184);
+    background-color: rgb(255, 255, 255);
   }
 
   /* Apply image border to the entire website */
-  body {
-    margin: 0;
-    padding: 0;
-    border: 100px solid black; /* Set the border width */
-    box-sizing: border-box; /* Ensures the border width is included in the element's total width and height */
-    border-image: url("$lib/Waves.png") 200 round; /* Adjust the path to your image */
-  }
 
   .creator {
     display: flex;
@@ -47,13 +40,8 @@
     max-width: 400px;
     margin-bottom: -150px;
     border-radius: 30px;
-    transition: all 1s ease-in-out;
   }
 
-  .JawsPicture:hover {
-    object-position: -75px;
-    max-width: 500px;
-  }
 
   .creator button {
     margin-top: 15px;
@@ -66,7 +54,7 @@
   }
 
   .creator button:hover {
-    background-color: rgb(60, 122, 60);
+    background-color: rgb(37, 97, 181);
     font-size: 30px;
   }
 
@@ -92,23 +80,12 @@
     height: 30px;
   }
 
-  .title {
-    border-radius: 5px;
-    border: 10px;
-    font-size: 70px;
-    margin-top: 10px;
-    transition: all 1s ease-in-out;
-  }
 
   .title-display {
     margin-top: 200px;
     font-size: 35px;
     font-family: sans-serif;
-    color: beige;
+    color: rgb(37, 97, 181);
   }
 
-  .title:hover {
-    font-size: 80px;
-    color: white;
-  }
 </style>
