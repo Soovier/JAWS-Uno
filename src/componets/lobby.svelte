@@ -7,7 +7,7 @@
     <div class="inner">
       <h1 class="UnoTitle">JawsUno</h1>
       <img class="JawsPicTitle" src={JawsUnoMain} alt="JawsUno Logo" />
-      <h1 class="multiplayerTitle">- Multiplayer</h1>
+      <h1 class="multiplayerTitle">Multiplayer</h1>
     </div>
     <div class="divSec2">
       <p class="Title2">
