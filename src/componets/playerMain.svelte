@@ -1,7 +1,8 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
-  import * as cards from "../backend components/main";
-  let deck = new cards.Deck();
+  import * as cards from "../lib/main";
+  import cardBack from "../lib/cardBack (1).png";
+  let deck = new cards.Deck(1);
   let cardss = deck.cards;
   console.log(cardss);
 </script>
@@ -13,43 +14,64 @@
     <div class="play p3">3</div>
     <div class="play p4">4</div>
   </li>
-  <!-- <img src={bluecard0} alt="" /> -->
+  <div class="container">
+    <img class="backHand" src={cardBack} alt="DECK" />
+  </div>
 </body>
 
 <style>
-  .boxplay {
-    list-style: none;
-    color: brown;
+  body {
+    overflow: hidden;
+    padding: 0;
   }
 
-  .center {
+  .boxplay {
+    list-style: none;
+    color: rgb(255, 0, 0);
+  }
+
+  .container {
+    position: absolute;
+    left: 650px;
+    bottom: 500px;
+  }
+
+  .backHand {
+    /* position: absolute; */
+    width: 120px;
   }
 
   .play {
-    width: 350px;
-    height: 200px;
+    width: 850px;
+    height: 850px;
     background-color: rgb(255, 132, 0);
+    position: absolute;
   }
 
-  .center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    margin: 0 auto;
+  .p1 {
+    left: 85%;
+    bottom: 100px;
+    transform: rotate(90deg);
   }
 
-  .p4 {
-    margin-top: 10%;
-    width: 1000px;
-    height: 350px;
+  .p2 {
+    right: 85%;
+    bottom: 100px;
   }
 
   .p3 {
-    margin-right: 90%;
-    rotate: 90deg;
-    width: 650px;
-    margin-top: -100px;
+    top: 85%;
+    bottom: 100px;
+    right: 450px;
+    width: 1000px;
+    transform: rotate(270deg);
+  }
+
+  .p4 {
+    bottom: 85%;
+    /* bottom: 100px; */
+    right: 450px;
+    width: 1000px;
+    transform: rotate(270deg);
   }
 </style>
