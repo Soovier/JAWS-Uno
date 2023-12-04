@@ -19,9 +19,11 @@
     </div>
 
     <div class="playerSection">
+      <h1 class="LobbyTitle">Lobby</h1>
       <a class="startGameMAIN" href="Game">
         <button class="startGame"> Start Game </button>
-      </a>
+        <a> </a></a
+      >
     </div>
   </div>
 </body>
@@ -37,6 +39,13 @@
     justify-content: center;
   }
 
+  .LobbyTitle {
+    display: block;
+    position: absolute;
+    left: 59%;
+    font-size: 45px;
+  }
+
   .playerSection {
     background-color: green;
     width: 800px;
@@ -48,10 +57,12 @@
   }
 
   .startGameMAIN {
+    /* display: block;
     background-color: rgb(121, 83, 83);
     width: 200px;
-    height: 150px;
-    /* width: px; */
+    height: 50px; */
+
+    /* * width: px; */
     /* max-height: 50px; */
   }
 
