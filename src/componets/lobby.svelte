@@ -19,7 +19,7 @@
     </div>
 
     <div class="playerSection">
-      <a class="startGameMAIN" href="Game">
+      <a class="startGameMAIN" href="Game" target="_self">
         <button class="startGame">Start Game</button>
       </a>
     </div>

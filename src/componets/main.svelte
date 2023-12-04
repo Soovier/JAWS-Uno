@@ -16,7 +16,7 @@
 
   <div class="creator">
     <button>
-      <a href="Settings">Create Game</a>
+      <a href="/Settings" target="_self">Create Game</a>
     </button>
     <button>Submit Game ID</button>
   </div>
