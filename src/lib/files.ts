@@ -110,4 +110,4 @@ export default {
     yellowPlusTwo: yellowPlusTwo,
     yellowReverse: yellowReverse,
     yellowSkip: yellowSkip,
-} 
+} as {[k:string]:string}

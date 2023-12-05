@@ -1,28 +1,28 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
-  import * as cards from "../lib/main";
-  import cardBack from "../lib/cardBack (1).png";
+  import * as cards from "$lib/main";
+  import cardBack from "$lib/cardBack (1).png";
   import cardsImgs from "$lib/files";
-  let deck = new cards.Deck(1);
-  let cardss = deck.cards;
+  let game = new cards.Game();
+  game.addPlayer("Striker");
+  game.addPlayer("Stephen");
+  game.start();
+  let player1 = game.players[0];
+  let player2 = game.players[1];
+
+  console.log(player1.cards);
 
   console.log("Working");
 </script>
 
 <body>
-  <li class="boxplay center">
-    <div class="play p1">1</div>
-    <div class="play p2">2</div>
-    <div class="play p3">3</div>
-    <div class="play p4">4</div>
-  </li>
-
-  <div style="width:{100 * Object.keys(cardsImgs).length}px; height:300px;">
-    {#each Object.entries(cardsImgs) as [key, value], i}
+  <div class="backContain" style="width:100%; height:100% z-index: 10; ">
+    {#each player1.cards as card, i}
+      <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
-        style="width: {100 + i * 2}px"
+        style="width: {100 + i * 0.1}px"
         class="cardImages"
-        src={value}
+        src={cardsImgs[card.cardString]}
         alt="Card image"
       />
     {/each}
@@ -39,9 +39,11 @@
     padding: 0;
   }
 
-  .boxplay {
-    list-style: none;
-    color: rgb(255, 0, 0);
+  .backContain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
   }
 
   .container {
@@ -53,39 +55,5 @@
   .backHand {
     /* position: absolute; */
     width: 120px;
-  }
-
-  .play {
-    width: 850px;
-    height: 850px;
-    background-color: rgb(255, 132, 0);
-    position: absolute;
-  }
-
-  .p1 {
-    left: 85%;
-    bottom: 100px;
-    transform: rotate(90deg);
-  }
-
-  .p2 {
-    right: 85%;
-    bottom: 100px;
-  }
-
-  .p3 {
-    top: 85%;
-    bottom: 100px;
-    right: 450px;
-    width: 1000px;
-    transform: rotate(270deg);
-  }
-
-  .p4 {
-    bottom: 85%;
-    /* bottom: 100px; */
-    right: 450px;
-    width: 1000px;
-    transform: rotate(270deg);
   }
 </style>
