@@ -20,6 +20,20 @@ export class Card {
         if (this.type != CARD_TYPES.NORMAL && this.type == other.type) return true;
         return false;
     }
+    get cardString() {
+        switch (this.type) {
+            case CARD_TYPES.NORMAL:
+                return this.color + this.number;
+            case CARD_TYPES.REVERSE:
+            case CARD_TYPES.PLUS_2:
+            case CARD_TYPES.SKIP:
+                return this.color + this.type;
+                break;
+            case CARD_TYPES.PLUS_4:
+            case CARD_TYPES.PICK_COLOR:
+                return this.type;
+        }
+    }
 };
 
 export class Deck {

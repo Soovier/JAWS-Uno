@@ -10,20 +10,7 @@
 
 	function cardToUI(cardArray: cards.Card[]) {
 		cardArray.forEach((c) => {
-			let string: string;
-			switch (c.type) {
-				case cards.CARD_TYPES.NORMAL:
-					string = c.color + c.number;
-					break;
-				case cards.CARD_TYPES.REVERSE:
-				case cards.CARD_TYPES.PLUS_2:
-				case cards.CARD_TYPES.SKIP:
-					string = c.color + c.type;
-					break;
-				case cards.CARD_TYPES.PLUS_4:
-				case cards.CARD_TYPES.PICK_COLOR:
-					string = c.type;
-			}
+			let string = c.cardString;
 			let img = cardsImgs[string];
 		});
 	}
