@@ -2,10 +2,10 @@
 export enum CARD_TYPES {
     NORMAL = "Normal",
     REVERSE = "Reverse",
-    PLUS_2 = "+2",
-    PLUS_4 = "+4",
-    PICK_COLOR = "pick",
-    SKIP = "skip",
+    PLUS_2 = "PlusTwo",
+    PLUS_4 = "wildCardPlusFour",
+    PICK_COLOR = "wildCardNormal",
+    SKIP = "Skip",
 };
 export enum CARD_COLORS {
     RED = "red", GREEN = "green", BLUE = "blue", YELLOW = "yellow", NONE = "none"
@@ -63,7 +63,7 @@ export class Deck {
         return this._deck.length == 0;
     }
 
-    
+
 }
 
 export class Player {
