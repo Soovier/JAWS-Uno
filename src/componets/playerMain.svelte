@@ -3,37 +3,36 @@
   import * as cards from "../lib/main";
   // import * as UnoFile from "../lib/Cards";
   import cardBack from "../lib/cardBack (1).png";
-  import * as fs from "fs";
   import * as path from "path";
+  import cardsImgs from "$lib/files";
   let deck = new cards.Deck(1);
   let cardss = deck.cards;
 
   const __dirname = path.resolve();
   const unoCardsPath = path.join(__dirname, "static", "UnoCards");
 
-  function cardToUI(cardArray: any[]) {
-    fs.readdir(unoCardsPath, (err, files) => {
-      if (err) throw err;
-
-      for (let i = 0; i < cardArray.length; i++) {
-        files.forEach((file) => {
-          let fileName: string = path.join(unoCardsPath, file);
-          let compressedName =
-            fileName.split("\\")[fileName.split("\\").length - 1];
-          let fileColor = compressedName.substring(0, -5);
-          let fileNumber = compressedName.substring(compressedName.length - 1);
-          console.log("File Number: " + fileNumber);
-        });
+  function cardToUI(cardArray: cards.Card[]) {
+    cardArray.forEach((c) => {
+      let string: string;
+      switch (c.type) {
+        case cards.CARD_TYPES.NORMAL:
+          string = c.color + c.number;
+          break;
+        case cards.CARD_TYPES.REVERSE:
+        case cards.CARD_TYPES.PLUS_2:
+        case cards.CARD_TYPES.SKIP:
+          string = c.color + c.type;
+          break;
+        case cards.CARD_TYPES.PLUS_4:
+        case cards.CARD_TYPES.PICK_COLOR:
+          string = c.type;
       }
+      let img = cardsImgs[string];
     });
   }
 
   cardToUI(cardss);
-  // console.log(UnoFileaddCardAttributes());
   console.log("Working");
-  // console.log(UnoFile.getFile());
-  // cardToUI(cardss); // turns cards into UI
-  // console.log(cardss);
 </script>
 
 <body>
