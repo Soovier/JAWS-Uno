@@ -21,6 +21,7 @@
 
   onMount(() => {
     cardToUI(cardss, cardImages);
+    console.log(cardImages.length);
     console.log(cardImages);
   });
 
