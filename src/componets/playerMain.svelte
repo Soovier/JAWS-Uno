@@ -1,10 +1,39 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
   import * as cards from "../lib/main";
+  // import * as UnoFile from "../lib/Cards";
   import cardBack from "../lib/cardBack (1).png";
+  import * as fs from "fs";
+  import * as path from "path";
   let deck = new cards.Deck(1);
   let cardss = deck.cards;
-  console.log(cardss);
+
+  const __dirname = path.resolve();
+  const unoCardsPath = path.join(__dirname, "static", "UnoCards");
+
+  function cardToUI(cardArray: any[]) {
+    fs.readdir(unoCardsPath, (err, files) => {
+      if (err) throw err;
+
+      for (let i = 0; i < cardArray.length; i++) {
+        files.forEach((file) => {
+          let fileName: string = path.join(unoCardsPath, file);
+          let compressedName =
+            fileName.split("\\")[fileName.split("\\").length - 1];
+          let fileColor = compressedName.substring(0, -5);
+          let fileNumber = compressedName.substring(compressedName.length - 1);
+          console.log("File Number: " + fileNumber);
+        });
+      }
+    });
+  }
+
+  cardToUI(cardss);
+  // console.log(UnoFileaddCardAttributes());
+  console.log("Working");
+  // console.log(UnoFile.getFile());
+  // cardToUI(cardss); // turns cards into UI
+  // console.log(cardss);
 </script>
 
 <body>

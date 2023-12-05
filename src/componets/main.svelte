@@ -1,7 +1,4 @@
 <script>
-  function makeGame() {
-    alert("GAME BEING MADE");
-  }
   import JawsUnoMain from "$lib/JawsUnoMain.png";
   import Waves from "../lib/Waves.png";
 </script>

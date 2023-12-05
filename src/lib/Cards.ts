@@ -3,7 +3,7 @@ import * as path from "path";
 import { log } from "console";
 
 
-class simpleCards {
+export class simpleCards {
     // Simple Card Class
     Color: String;
     Value: Number;
@@ -26,26 +26,25 @@ class simpleCards {
     }
   }
 
-  function addCardAttributes(cardName: string) {}
+  export function getFile() {
+    let counter: number = 0;
 
-  let counter: number = 0;
-
-  // Get current file path
-  const __dirname = path.resolve();
-  // Construct full path to UnoCards folder  // Specify folder path
-  const unoCardsPath = path.join(__dirname, "src", "UnoCards");
-
-  // Read files
-  fs.readdir(unoCardsPath, (err, files) => {
-    // Check for error
-    if (err) throw err;
-
-    // Access files here
-    files.forEach((file) => {
-      let fileName: string = path.join(unoCardsPath, file);
-      counter++;
-      let compressedName =
-        fileName.split("\\")[fileName.split("\\").length - 1]; // split by end
-      console.log(compressedName.slice(0, -4));
+    const __dirname = path.resolve();
+    const unoCardsPath = path.join(__dirname, "static", "UnoCards");
+  
+    // Read files
+    fs.readdir(unoCardsPath, (err, files) => {
+      // Check for error
+      if (err) throw err;
+  
+      // Access files here
+      files.forEach((file) => {
+        let fileName: string = path.join(unoCardsPath, file);
+        counter++;
+        let compressedName =
+          fileName.split("\\")[fileName.split("\\").length - 1]; // split by end
+        console.log(compressedName.slice(0, -4));
+      });
     });
-  });
+  }
+
