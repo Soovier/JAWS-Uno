@@ -21,7 +21,7 @@
 
 <style>
   body {
-    background-color: rgb(99, 161, 184);
+    background-color: rgb(255, 255, 255);
   }
 
   /* Apply image border to the entire website */
@@ -63,7 +63,7 @@
   }
 
   .creator button:hover {
-    background-color: rgb(60, 122, 60);
+    background-color: rgb(36,158,228);
     font-size: 30px;
   }
 
@@ -101,7 +101,7 @@
     margin-top: 200px;
     font-size: 35px;
     font-family: sans-serif;
-    color: beige;
+    color: rgb(0, 0, 0);
   }
 
   .title:hover {

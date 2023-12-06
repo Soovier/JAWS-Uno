@@ -5,23 +5,21 @@
 <body class="displ">
   <div class="groundBack">
     <div class="inner">
-      <h1 class="UnoTitle">JawsUno</h1>
       <img class="JawsPicTitle" src={JawsUnoMain} alt="" />
-      <h1>- Multiplayer</h1>
     </div>
     <div class="divSec2">
       <p class="Title2">
-        Just like UNO ® but better! Free to play online with friends!
+        Just like UNO but better!
       </p>
     </div>
     <div>
-      <p class="Title3">Invite your friends to play with you:</p>
+      <p class="Title3">Singleplayer UNO!</p>
     </div>
 
     <div class="playerSection">
       <h1 class="LobbyTitle">Lobby</h1>
       <a class="startGameMAIN" href="Game" target="_self">
-        <button class="startGame"> Start Game </button>
+        <button class="startGame">Start Game</button>
       </a>
     </div>
   </div>
@@ -29,89 +27,91 @@
 
 <style>
   body {
-    background-color: rgb(178, 81, 162);
+    background-color: rgb(36, 158, 228);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
   }
 
   .displ {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .LobbyTitle {
-    display: block;
-    position: absolute;
-    left: 59%;
-    font-size: 45px;
-  }
-
-  .playerSection {
-    background-color: green;
-    width: 800px;
-    height: 500px;
-    margin-left: 700px;
-    border-radius: 35px;
-    margin-top: -10px;
-    border-color: red;
-  }
-
-  .startGameMAIN {
-    /* display: block;
-    background-color: rgb(121, 83, 83);
-    width: 200px;
-    height: 50px; */
-
-    /* * width: px; */
-    /* max-height: 50px; */
-  }
-
-  .startGame {
-    border: none;
-    margin-left: 300px;
-    margin-top: 440px;
-    width: 200px;
-    height: 50px;
-    border-radius: 20%;
-    font-size: 25px;
-    font-style: italic;
-    font-weight: 400px;
-    color: black;
-  }
-
-  .Title3 {
-    font-size: 30px;
-    margin-top: -55px;
-    margin-left: 25px;
+    flex-direction: column;
   }
 
   .groundBack {
-    width: 1700px;
-    height: 1000px;
-    /* margin: 0 auto; */
+    width: 900px;
+    height: 600px;  /* Adjusted height */
     border-radius: 25px;
-    background-color: rgb(142, 194, 10);
-    margin-top: 10px;
-  }
-
-  .Title2 {
-    font-size: 40px;
-    font-weight: 400px;
-    margin-left: 25px;
-    margin-bottom: 100px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .inner {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 1em;
     color: rgb(0, 0, 0);
     font-size: 38px;
-    margin-left: 25px;
+    margin: 20px;
   }
 
   .JawsPicTitle {
-    max-width: 100px;
+    max-width: 150px;
     max-height: 100px;
-    margin-top: 45px;
+    margin-right: 10px;
+  }
+
+  .divSec2 {
+    margin: 20px;
+    text-align: center;
+  }
+
+  .Title2 {
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .Title3 {
+    font-size: 30px;
+    margin-top: -15px;
+  }
+
+  .playerSection {
+    background-color: rgb(228, 228, 228);
+    width: 500px;  /* Kept the same width */
+    height: fit-content;  /* Kept the same height */
+    border-radius: 15px;
+    margin: 20px;
+    text-align: center;
+  }
+
+  .LobbyTitle {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .startGameMAIN {
+    text-decoration: none;
+  }
+
+  .startGame {
+    border: none;
+    margin-top: 10px;
+    width: 150px;
+    height: 40px;
+    border-radius: 20%;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: black;
   }
 </style>
