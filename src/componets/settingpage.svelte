@@ -88,7 +88,7 @@
 
   button:hover {
     font-size: 80px;
-    color: green;
+    color: rgb(255, 255, 255);
     background-color: blanchedalmond;
   }
 
