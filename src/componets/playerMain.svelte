@@ -10,12 +10,34 @@
   let player1 = game.players[0];
   let player2 = game.players[1];
 
+  let startingCard = cards.Card;
+
+  function IsValidCard(playerCard: any, mainCard: any) {
+    let currColor = playerCard.color;
+    let currNumber = playerCard.value;
+    let currType = playerCard.Type;
+
+    if (mainCard.color == playerCard.color) {
+      if (currNumber == mainCard.value) {
+      }
+    }
+
+    // None colored cards found here
+    if (currNumber == -1) {
+      // +4 , +2 , WildCards etc..
+      // place holder
+    } else if (currNumber == -1 || currColor == undefined || null) {
+    }
+  }
+
   function handleClick(playercardArray: any | cards.Card, index: number) {
     console.log(playercardArray[index].color);
     console.log(playercardArray[index].type);
-    console.log(playercardArray[index].value);
+    console.log(playercardArray[index].number);
   }
   console.log("Loaded");
+  console.log();
+
   // console.log(player1.cards);
 </script>
 
@@ -28,7 +50,7 @@
       <!-- svelte-ignore a11y-missing-content -->
       <a href="#">
         <img
-          style="width: {125 + i * 0.5}px; margin-bottom: 20px; order: 2 "
+          style="width: {120 + i * 0.5}px; margin-bottom: 20px; order: 2 "
           class="cardImages"
           src={cardsImgs[card.cardString]}
           alt="Card image"
