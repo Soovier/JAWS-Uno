@@ -9,36 +9,33 @@
   game.start();
   let player1 = game.players[0];
   let player2 = game.players[1];
+  let counter = 0;
 
-  let startingCard = cards.Card;
+  let currMiddleCard: cards.Card;
 
-  function IsValidCard(playerCard: any, mainCard: any) {
-    let currColor = playerCard.color;
-    let currNumber = playerCard.value;
-    let currType = playerCard.Type;
-
-    if (mainCard.color == playerCard.color) {
-      if (currNumber == mainCard.value) {
-      }
+  while (true) {
+    let startingCard: any = player2.getCard(counter);
+    if (counter >= 8) {
+      break;
     }
-
-    // None colored cards found here
-    if (currNumber == -1) {
-      // +4 , +2 , WildCards etc..
-      // place holder
-    } else if (currNumber == -1 || currColor == undefined || null) {
+    if (startingCard.number == -1) {
+      counter++;
     }
+    break;
   }
 
   function handleClick(playercardArray: any | cards.Card, index: number) {
-    console.log(playercardArray[index].color);
-    console.log(playercardArray[index].type);
-    console.log(playercardArray[index].number);
+    let player1Card = playercardArray[index];
+
+    if (player1Card.canPlay(player2.cards[counter])) {
+      currMiddleCard = player1Card;
+      // REMOVE CARD FROM ARRAY
+      // PUT INTO UI
+    } else {
+      console.log("Not Valid Input For Uno");
+    }
   }
   console.log("Loaded");
-  console.log();
-
-  // console.log(player1.cards);
 </script>
 
 <body class="disBox forplayer1">
@@ -56,7 +53,6 @@
           alt="Card image"
         />
       </a>
-      <!-- <h1 style="color: beige;">bot</h1> -->
     {/each}
   </div>
 
@@ -76,13 +72,19 @@
           alt="Card image"
         />
       </a>
-      <!-- <h1 style="color: aliceblue;">player</h1> -->
     {/each}
   </div>
 
-  <div class="container" style="display: flex; gap: 30em">
+  <div class="container" style="display: flex; gap: 10em">
     <img class="backHand" src={cardBack} alt="DECK" />
-    <a href="#" style="color: white; font-size: 30px;">Uno Button</a>
+    <img
+      style="width: 100px;"
+      src={cardsImgs[player2.getCard(counter).cardString]}
+      alt=""
+    />
+    <a class="unoButton" href="#" style="color: white; font-size: 30px;"
+      >Uno Button</a
+    >
   </div>
 </body>
 
@@ -90,10 +92,18 @@
   body {
     overflow: hidden;
     width: 100%;
+    padding: 0;
     margin: 0 auto;
-    height: 98vh;
+    height: 100%;
     background-image: url("$lib/woodback.png");
     background-color: rgb(255, 221, 0);
+  }
+
+  .unoButton {
+    text-decoration: none;
+    width: 105px;
+    height: 75px;
+    background-color: rgb(95, 95, 201);
   }
 
   .disBox {
@@ -108,8 +118,8 @@
     transition: all 0.6s ease-in-out;
   }
 
-  .cardImages:hover {
-    margin-bottom: 25px;
+  .cardImages:hover:not(.forplayer1) {
+    transform: translateY(-25px);
     height: 190px;
   }
 
@@ -117,7 +127,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgb(0, 0, 0); */
   }
 
   .container {

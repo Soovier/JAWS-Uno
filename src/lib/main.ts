@@ -75,8 +75,6 @@ export class Deck {
     isEmpty() {
         return this._deck.length == 0;
     }
-
-
 }
 
 export class Player {
