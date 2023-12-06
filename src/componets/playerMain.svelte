@@ -4,43 +4,69 @@
   import cardBack from "$lib/cardBack (1).png";
   import cardsImgs from "$lib/files";
   let game = new cards.Game();
-  game.addPlayer("Striker");
-  game.addPlayer("Stephen");
+  game.addPlayer("Computer");
+  game.addPlayer("Player 1");
   game.start();
   let player1 = game.players[0];
   let player2 = game.players[1];
 
-  console.log(player1.cards);
+  function handleClick(playercardArray: any | cards.Card, index: number) {
+    console.log(playercardArray[index].color);
+    console.log(playercardArray[index].type);
+    console.log(playercardArray[index].value);
+  }
+  console.log("Loaded");
+  // console.log(player1.cards);
 </script>
 
 <body class="disBox forplayer1">
-  <div>
-    <div class="backContain" style="width:100%; height:100% z-index: 10; ">
-      {#each player1.cards as card, i}
-        <!-- svelte-ignore a11y-img-redundant-alt -->
-        <!-- svelte-ignore a11y-invalid-attribute -->
-        <!-- svelte-ignore a11y-missing-content -->
-        <a href="#">
-          <img
-            style="width: {125 + i * 0.5}px"
-            class="cardImages"
-            src={cardsImgs[card.cardString]}
-            alt="Card image"
-          />
-        </a>
-      {/each}
-    </div>
+  <!-- <div><img class="startCard" src={cardsImgs[4]} alt="startCard" /></div> -->
+  <div class="backContain" style="width:100%; height:100% z-index: 0; ">
+    {#each player2.cards as card, i}
+      <!-- svelte-ignore a11y-img-redundant-alt -->
+      <!-- svelte-ignore a11y-invalid-attribute -->
+      <!-- svelte-ignore a11y-missing-content -->
+      <a href="#">
+        <img
+          style="width: {125 + i * 0.5}px; margin-bottom: 20px; order: 2 "
+          class="cardImages"
+          src={cardsImgs[card.cardString]}
+          alt="Card image"
+        />
+      </a>
+      <!-- <h1 style="color: beige;">bot</h1> -->
+    {/each}
   </div>
 
-  <div class="container">
+  <div
+    class="backContain"
+    style="width:100%; height:100% z-index: 10; margin-top: 200px "
+  >
+    {#each player1.cards as card, i}
+      <!-- svelte-ignore a11y-img-redundant-alt -->
+      <!-- svelte-ignore a11y-invalid-attribute -->
+      <!-- svelte-ignore a11y-missing-content -->
+      <a on:click={(event) => handleClick(player1.cards, i)} href="#">
+        <img
+          style="width: {125 + i * 0.5}px"
+          class="cardImages"
+          src={cardsImgs[card.cardString]}
+          alt="Card image"
+        />
+      </a>
+      <!-- <h1 style="color: aliceblue;">player</h1> -->
+    {/each}
+  </div>
+
+  <div class="container" style="display: flex; gap: 30em">
     <img class="backHand" src={cardBack} alt="DECK" />
+    <a href="#" style="color: white; font-size: 30px;">Uno Button</a>
   </div>
 </body>
 
 <style>
   body {
     overflow: hidden;
-    /* padding: 0; */
     width: 100%;
     margin: 0 auto;
     height: 98vh;
@@ -52,6 +78,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    flex-direction: column;
+    gap: 35em;
   }
 
   .cardImages {
