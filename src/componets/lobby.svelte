@@ -20,10 +20,9 @@
 
     <div class="playerSection">
       <h1 class="LobbyTitle">Lobby</h1>
-      <a class="startGameMAIN" href="Game">
+      <a class="startGameMAIN" href="Game" target="_self">
         <button class="startGame"> Start Game </button>
-        <a> </a></a
-      >
+      </a>
     </div>
   </div>
 </body>
