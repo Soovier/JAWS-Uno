@@ -7,15 +7,13 @@
   <div class="main-back">
     <h1 class="title">Jaws-Uno-Game</h1>
     <img class="JawsPicture" src={JawsUnoMain} alt="JawsLogo" />
-    <h3 class="title-display">Please Enter Your Game ID</h3>
-    <input class="ID-Enter" type="text" />
+    <h3 class="title-display">______________________</h3>
   </div>
 
   <div class="creator">
     <button>
-      <a href="Settings" target="_self">Create Game</a>
+      <a href="Settings" target="_self">Get Started!</a>
     </button>
-    <button>Submit Game ID</button>
   </div>
 </body>
 
@@ -44,26 +42,21 @@
     max-width: 400px;
     margin-bottom: -150px;
     border-radius: 30px;
-    transition: all 1s ease-in-out;
   }
 
-  .JawsPicture:hover {
-    object-position: -75px;
-    max-width: 500px;
-  }
 
   .creator button {
     margin-top: 15px;
-    min-width: 100px;
-    min-height: 25px;
-    font-size: 20px;
+    min-width: 200px;
+    min-height: 75px;
+    font-size: 40px;
     font-family: "Times New Roman", Times, serif;
     font-weight: 400px;
     transition: all 0.45s ease-in-out;
   }
 
   .creator button:hover {
-    background-color: rgb(36,158,228);
+    background-color: rgb(239, 94, 94);
     font-size: 30px;
   }
 
@@ -81,13 +74,6 @@
     height: 100%;
   }
 
-  .ID-Enter {
-    border-radius: 50px;
-    outline: none;
-    text-decoration: none;
-    width: 25%;
-    height: 30px;
-  }
 
   .title {
     border-radius: 5px;
@@ -101,11 +87,11 @@
     margin-top: 200px;
     font-size: 35px;
     font-family: sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(2, 83, 129);
   }
 
   .title:hover {
     font-size: 80px;
-    color: white;
+    color: rgb(2, 83, 129);
   }
 </style>
