@@ -28,7 +28,6 @@ export class Card {
             case CARD_TYPES.PLUS_2:
             case CARD_TYPES.SKIP:
                 return this.color + this.type;
-                break;
             case CARD_TYPES.PLUS_4:
             case CARD_TYPES.PICK_COLOR:
                 return this.type;
@@ -140,6 +139,11 @@ export class Game {
             if (player.hasWon()) return true;
         }
         return false;
+    }
+    canPlay(player: number, card: number) {
+        let p = this.getPlayer(player);
+        let c = p.getCard(card);
+        return c.canPlay(this.lastCard);
     }
     play(player: number, card: number) {
         let p = this.getPlayer(player);
