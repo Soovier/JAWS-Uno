@@ -103,6 +103,7 @@ export class Game {
     private _deck: Deck;
     private _played: Card[];
     private _isReverse: boolean;
+    private _color: CARD_COLORS;
     constructor() {
         this._players = [];
         this._deck = new Deck(1);
@@ -110,6 +111,7 @@ export class Game {
         // Game has not started
         this._turn = -1;
         this._isReverse = false;
+        this._color = CARD_COLORS.NONE;
     }
     get players() { return this._players; }
     get turn() { return this._turn; }
@@ -142,28 +144,38 @@ export class Game {
         return false;
     }
     canPlay(player: number, card: number) {
+        if (this.turn != player) {
+            return false;
+        }
         let p = this.getPlayer(player);
         let c = p.getCard(card);
-        return c.canPlay(this.lastCard);
+        return this.canPlayCard(c);
     }
-    canPlayCard(card: Card) {
-        return card.canPlay(this.lastCard);
+    private canPlayCard(card: Card) {
+        return this._color == CARD_COLORS.NONE || (card.color == this._color && card.canPlay(this.lastCard));
     }
     play(player: number, card: number) {
+        if (!this.canPlay(player, card)) {
+            return false;
+        }
         let p = this.getPlayer(player);
         let c = p.removeCard(card);
-        if (!c.canPlay(this.lastCard)) console.log("Can't Play!");
-        this.playCard(c, p);
+        this.playCard(c);
+        return true;
     }
-    private playCard(c: Card, player: Player) {
-        console.log(c);
+    private playCard(c: Card, color: CARD_COLORS = CARD_COLORS.NONE) {
         this._played.push(c);
+        this._color = c.color;
         if (c.type == CARD_TYPES.REVERSE) this._isReverse = !this._isReverse;
         let next = this.nextTurn();
         switch (c.type) {
+            case CARD_TYPES.PICK_COLOR:
+                this._color = color;
+                break;
             case CARD_TYPES.PLUS_4:
                 next.addCard(this.getCardFromDeck());
                 next.addCard(this.getCardFromDeck());
+                this._color = color;
             case CARD_TYPES.PLUS_2:
                 next.addCard(this.getCardFromDeck());
                 next.addCard(this.getCardFromDeck());
@@ -180,7 +192,7 @@ export class Game {
     }
     start() {
         this.distribute();
-        this.playCard(this.getCardFromDeck(), this._players[0]);
+        this.playCard(this.getCardFromDeck());
     }
     private distribute() {
         for (let index = 0; index < this._players.length; index++) {
