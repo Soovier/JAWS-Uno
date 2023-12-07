@@ -10,8 +10,7 @@
   let player1 = game.players[0];
   let player2 = game.players[1];
   let counter = 0;
-
-  let currMiddleCard: cards.Card;
+  let currMiddleCard: cards.Card | any;
 
   while (true) {
     let startingCard: any = player2.getCard(counter);
@@ -20,6 +19,7 @@
     }
     if (startingCard.number == -1) {
       counter++;
+      continue;
     }
     break;
   }
@@ -28,14 +28,15 @@
     let player1Card = playercardArray[index];
 
     if (player1Card.canPlay(player2.cards[counter])) {
-      currMiddleCard = player1Card;
-      // REMOVE CARD FROM ARRAY
-      // PUT INTO UI
+      currMiddleCard = player1Card.cardString;
+      player1.removeCard(index);
+      console.log(player1.cards);
     } else {
       console.log("Not Valid Input For Uno");
     }
   }
-  console.log("Loaded");
+  // console.log("Loaded");
+  currMiddleCard = player2.getCard(counter);
 </script>
 
 <body class="disBox forplayer1">
@@ -77,11 +78,7 @@
 
   <div class="container" style="display: flex; gap: 10em">
     <img class="backHand" src={cardBack} alt="DECK" />
-    <img
-      style="width: 100px;"
-      src={cardsImgs[player2.getCard(counter).cardString]}
-      alt=""
-    />
+    <img style="width: 100px;" src={cardsImgs[currMiddleCard]} alt="" />
     <a class="unoButton" href="#" style="color: white; font-size: 30px;"
       >Uno Button</a
     >
