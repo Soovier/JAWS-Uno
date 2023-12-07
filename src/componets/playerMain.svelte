@@ -4,22 +4,25 @@
   import cardBack from "$lib/cardBack (1).png";
   import cardsImgs from "$lib/files";
   import { fade } from "svelte/transition";
-  let animate = false;
+
+  let isCentered = false;
 
   let game = new cards.Game();
   game.addPlayer("Computer");
   game.addPlayer("Player 1");
   game.start();
   game.botPlay(0);
+
   function handleClick(player: number, index: number) {
     console.log(game);
     if (game.canPlay(player, index)) {
+      isCentered = true;
       game.play(player, index);
       console.log(game.players[player]);
       game.botPlay(0);
       game = game;
     } else {
-      console.log("Not     Valid Input For Uno");
+      console.log("Not Valid Input For Uno");
     }
   }
 </script>
@@ -53,7 +56,7 @@
       <a on:click={(event) => handleClick(1, i)} href="#">
         <img
           style="width: {125 + i * 0.5}px"
-          class="cardImages"
+          class="cardImages {isCentered ? 'centered' : ''}"
           src={cardsImgs[card.cardString]}
           alt="Card image"
         />
@@ -65,6 +68,7 @@
     <a
       on:click={(event) => {
         game.draw(game.turn);
+        game.botPlay(0);
         game = game;
       }}
       href="#"
@@ -91,6 +95,10 @@
     height: 100%;
     background-image: url("$lib/woodback.png");
     background-color: rgb(255, 221, 0);
+  }
+
+  .centered {
+    transform: translate(-50%, -50%);
   }
 
   .unoButton {
