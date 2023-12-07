@@ -7,13 +7,10 @@
 	game.addPlayer("Computer");
 	game.addPlayer("Player 1");
 	game.start();
-	let player1 = game.players[0];
-	let player2 = game.players[1];
 	let counter = 0;
-	let currMiddleCard = game.lastCard;
 
 	while (true) {
-		let startingCard: any = player2.getCard(counter);
+		let startingCard: any = game.players[1].getCard(counter);
 		if (counter >= 8) {
 			break;
 		}
@@ -24,15 +21,11 @@
 		break;
 	}
 
-	function handleClick(playercardArray: cards.Card[], index: number) {
-		console.log(index);
-		let player1Card = playercardArray[index];
-		console.log(game.lastCard);
-		if (game.canPlayCard(player1Card)) {
-			currMiddleCard = player1Card;
-			player1.removeCard(index);
-			console.log(player1.cards);
-			player1 = player1;
+	function handleClick(player: number, index: number) {
+		if (game.canPlay(player, index)) {
+			game.play(player, index);
+			console.log(game.players[player]);
+			game = game;
 		} else {
 			console.log("Not Valid Input For Uno");
 		}
@@ -42,7 +35,7 @@
 <body class="disBox forplayer1">
 	<!-- <div><img class="startCard" src={cardsImgs[4]} alt="startCard" /></div> -->
 	<div class="backContain" style="width:100%; height:100% z-index: 0; ">
-		{#each player2.cards as card, i}
+		{#each game.players[0].cards as card, i}
 			<!-- svelte-ignore a11y-img-redundant-alt -->
 			<!-- svelte-ignore a11y-invalid-attribute -->
 			<!-- svelte-ignore a11y-missing-content -->
@@ -61,11 +54,11 @@
 		class="backContain"
 		style="width:100%; height:100% z-index: 10; margin-top: 200px "
 	>
-		{#each player1.cards as card, i}
+		{#each game.players[1].cards as card, i}
 			<!-- svelte-ignore a11y-img-redundant-alt -->
 			<!-- svelte-ignore a11y-invalid-attribute -->
 			<!-- svelte-ignore a11y-missing-content -->
-			<a on:click={(event) => handleClick(player1.cards, i)} href="#">
+			<a on:click={(event) => handleClick(1, i)} href="#">
 				<img
 					style="width: {125 + i * 0.5}px"
 					class="cardImages"
@@ -80,7 +73,7 @@
 		<img class="backHand" src={cardBack} alt="DECK" />
 		<img
 			style="width: 100px;"
-			src={cardsImgs[currMiddleCard.cardString]}
+			src={cardsImgs[game.lastCard.cardString]}
 			alt=""
 		/>
 		<a class="unoButton" href="#" style="color: white; font-size: 30px;"
