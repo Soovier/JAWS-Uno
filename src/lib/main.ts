@@ -171,11 +171,13 @@ export class Game {
     }
     botPlay(player: number) {
         let p = this.getPlayer(player);
-        for (let index = 0; index < p.cards.length; index++) {
-            const card = p.cards[index];
-            if (this.canPlayCard(card)) this.play(player, index);
+        while (this.turn == player) {
+            for (let index = 0; index < p.cards.length; index++) {
+                const card = p.cards[index];
+                if (this.canPlayCard(card)) this.play(player, index);
+            }
+            this.draw(player);
         }
-        this.draw(player);
     }
     play(player: number, card: number) {
         if (!this.canPlay(player, card)) {
