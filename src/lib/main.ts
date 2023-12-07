@@ -143,6 +143,9 @@ export class Game {
         let c = p.getCard(card);
         return c.canPlay(this.lastCard);
     }
+    canPlayCard(card: Card) {
+        return card.canPlay(this.lastCard);
+    }
     play(player: number, card: number) {
         let p = this.getPlayer(player);
         let c = p.removeCard(card);
