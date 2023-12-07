@@ -41,14 +41,17 @@ export class Deck {
     constructor(decks: number) {
         this._deck = [];
         for (let index = 0; index < decks; index++) {
-            this.createColors(CARD_COLORS.BLUE);
-            this.createColors(CARD_COLORS.GREEN);
-            this.createColors(CARD_COLORS.RED);
-            this.createColors(CARD_COLORS.YELLOW);
-            for (let index = 0; index < 4; index++) {
-                this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PLUS_4));
-                this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PICK_COLOR));
-            }
+            this.addDeck();
+        }
+    }
+    addDeck() {
+        // this.createColors(CARD_COLORS.BLUE);
+        // this.createColors(CARD_COLORS.GREEN);
+        // this.createColors(CARD_COLORS.RED);
+        // this.createColors(CARD_COLORS.YELLOW);
+        for (let index = 0; index < 4; index++) {
+            this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PLUS_4));
+            this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PICK_COLOR));
         }
     }
     get cards() { return this._deck; };
@@ -195,8 +198,13 @@ export class Game {
     }
     private getCardFromDeck() {
         if (this._deck.isEmpty()) {
+            const lastCard = this.lastCard;
+            this._played.pop();
             this._deck.cards.concat(this._played);
-            this._played = [this._played[this._played.length - 1]]
+            this._played = [lastCard]
+        }
+        if (this._deck.isEmpty()) {
+            this._deck.addDeck();
         }
         return this._deck.getCard() as Card;
     }

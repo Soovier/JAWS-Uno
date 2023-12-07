@@ -10,26 +10,6 @@
 	game.addPlayer("Computer");
 	game.addPlayer("Player 1");
 	game.start();
-	let counter = 0;
-
-	while (true) {
-		let startingCard: any = game.players[1].getCard(counter);
-		if (counter >= 8) {
-			break;
-		}
-		if (startingCard.number == -1) {
-			counter++;
-			continue;
-		}
-		break;
-	}
-
-	function AddCardToDeck(player: number) {
-		let plr = game.players[player];
-		plr.addCard(game.players[1].getCard(counter++));
-		game = game;
-	}
-
 	function handleClick(player: number, index: number) {
 		console.log(game);
 		if (game.canPlay(player, index)) {
