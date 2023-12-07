@@ -15,6 +15,7 @@ export class Card {
     };
     canPlay(other: Card) {
         if (this.color == CARD_COLORS.NONE) return true;
+        if (other.color == CARD_COLORS.NONE) return true;
         if (this.color == other.color) return true;
         if (this.number != -1 && this.number == other.number) return true;
         if (this.type != CARD_TYPES.NORMAL && this.type == other.type) return true;
@@ -69,7 +70,11 @@ export class Deck {
             return this._deck.pop();
         const rand = Math.floor(Math.random() * (this._deck.length - 1));
         const card = this._deck[rand];
-        this._deck[rand] = this._deck.pop() as Card;
+        if (rand == this._deck.length - 1) {
+            this._deck.pop()
+        } else {
+            this._deck[rand] = this._deck.pop() as Card;
+        }
         return card;
     }
     isEmpty() {
@@ -92,7 +97,11 @@ export class Player {
     }
     removeCard(i: number) {
         const card = this.cards[i];
-        this.cards[i] = this.cards.pop() as Card;
+        if (i == this.cards.length - 1) {
+            this.cards.pop();
+        } else {
+            this.cards[i] = this.cards.pop() as Card;
+        }
         return card;
     }
 }
@@ -152,7 +161,7 @@ export class Game {
         return this.canPlayCard(c);
     }
     private canPlayCard(card: Card) {
-        return this._color == CARD_COLORS.NONE || (card.color == this._color && card.canPlay(this.lastCard));
+        return card.color == CARD_COLORS.NONE || (card.color == this._color || card.canPlay(this.lastCard));
     }
     play(player: number, card: number) {
         if (!this.canPlay(player, card)) {
