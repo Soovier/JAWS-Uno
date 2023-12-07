@@ -78,7 +78,7 @@ export class Deck {
 }
 
 export class Player {
-    constructor(public readonly name: string, private _cards: Card[] = []) {
+    constructor(public readonly name: string, private _cards: Card[] = [], private uno = false) {
     }
     get cards() { return this._cards; }
     getCard(i: number) {
@@ -115,6 +115,9 @@ export class Game {
     get turn() { return this._turn; }
     get playing() { return this._players[this._turn]; }
     get lastCard() { return this._played[this._played.length - 1] }
+    draw(player: number) {
+        this.players[player].addCard(this.getCardFromDeck());
+    }
     getPlayer(player: number) {
         return this.players[player];
     }
