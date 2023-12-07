@@ -130,6 +130,9 @@ export class Game {
     get playing() { return this._players[this._turn]; }
     get lastCard() { return this._played[this._played.length - 1] }
     draw(player: number) {
+        if (player != this.turn) {
+            return;
+        }
         this.players[player].addCard(this.getCardFromDeck());
         this.nextTurn();
     }
@@ -157,15 +160,22 @@ export class Game {
         return false;
     }
     canPlay(player: number, card: number) {
-        if (this.turn != player) {
+        if (this.turn != player)
             return false;
-        }
         let p = this.getPlayer(player);
         let c = p.getCard(card);
         return this.canPlayCard(c);
     }
     private canPlayCard(card: Card) {
         return card.color == CARD_COLORS.NONE || (card.color == this._color || card.canPlay(this.lastCard));
+    }
+    botPlay(player: number) {
+        let p = this.getPlayer(player);
+        for (let index = 0; index < p.cards.length; index++) {
+            const card = p.cards[index];
+            if (this.canPlayCard(card)) this.play(player, index);
+        }
+        this.draw(player);
     }
     play(player: number, card: number) {
         if (!this.canPlay(player, card)) {
