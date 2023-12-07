@@ -45,10 +45,10 @@ export class Deck {
         }
     }
     addDeck() {
-        // this.createColors(CARD_COLORS.BLUE);
-        // this.createColors(CARD_COLORS.GREEN);
-        // this.createColors(CARD_COLORS.RED);
-        // this.createColors(CARD_COLORS.YELLOW);
+        this.createColors(CARD_COLORS.BLUE);
+        this.createColors(CARD_COLORS.GREEN);
+        this.createColors(CARD_COLORS.RED);
+        this.createColors(CARD_COLORS.YELLOW);
         for (let index = 0; index < 4; index++) {
             this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PLUS_4));
             this._deck.push(new Card(CARD_COLORS.NONE, CARD_TYPES.PICK_COLOR));
