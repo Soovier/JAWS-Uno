@@ -80,7 +80,13 @@
 	</div>
 
 	<div class="container" style="display: flex; gap: 10em">
-		<a on:click={(event) => AddCardToDeck(1)} href="#">
+		<a
+			on:click={(event) => {
+				game.draw(game.turn);
+				game = game;
+			}}
+			href="#"
+		>
 			<img class="backHand" src={cardBack} alt="DECK" />
 		</a>
 		<img

@@ -128,6 +128,7 @@ export class Game {
     get lastCard() { return this._played[this._played.length - 1] }
     draw(player: number) {
         this.players[player].addCard(this.getCardFromDeck());
+        this.nextTurn();
     }
     getPlayer(player: number) {
         return this.players[player];
