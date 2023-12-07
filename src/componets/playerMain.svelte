@@ -1,133 +1,135 @@
 <!-- MyComponent.svelte -->
 <script lang="ts">
-  import * as cards from "$lib/main";
-  import cardBack from "$lib/cardBack (1).png";
-  import cardsImgs from "$lib/files";
-  let game = new cards.Game();
-  game.addPlayer("Computer");
-  game.addPlayer("Player 1");
-  game.start();
-  let player1 = game.players[0];
-  let player2 = game.players[1];
+	import * as cards from "$lib/main";
+	import cardBack from "$lib/cardBack (1).png";
+	import cardsImgs from "$lib/files";
+	let game = new cards.Game();
+	game.addPlayer("Computer");
+	game.addPlayer("Player 1");
+	game.start();
+	let player1 = game.players[0];
+	let player2 = game.players[1];
 
-  let startingCard = cards.Card;
+	let startingCard = cards.Card;
 
-  function IsValidCard(playerCard: any, mainCard: any) {
-    let currColor = playerCard.color;
-    let currNumber = playerCard.value;
-    let currType = playerCard.Type;
+	function IsValidCard(playerCard: any, mainCard: any) {
+		let currColor = playerCard.color;
+		let currNumber = playerCard.value;
+		let currType = playerCard.Type;
 
-    if (mainCard.color == playerCard.color) {
-      if (currNumber == mainCard.value) {
-      }
-    }
+		if (mainCard.color == playerCard.color) {
+			if (currNumber == mainCard.value) {
+			}
+		}
 
-    // None colored cards found here
-    if (currNumber == -1) {
-      // +4 , +2 , WildCards etc..
-      // place holder
-    } else if (currNumber == -1 || currColor == undefined || null) {
-    }
-  }
+		// None colored cards found here
+		if (currNumber == -1) {
+			// +4 , +2 , WildCards etc..
+			// place holder
+		} else if (currNumber == -1 || currColor == undefined || null) {
+		}
+	}
 
-  function handleClick(playercardArray: any | cards.Card, index: number) {
-    console.log(playercardArray[index].color);
-    console.log(playercardArray[index].type);
-    console.log(playercardArray[index].number);
-  }
-  console.log("Loaded");
-  console.log();
+	function handleClick(playercardArray: any | cards.Card, index: number) {
+		console.log(playercardArray[index].color);
+		console.log(playercardArray[index].type);
+		console.log(playercardArray[index].number);
+		player1.cards.pop();
+		player1 = player1;
+	}
+	console.log("Loaded");
+	console.log();
 
-  // console.log(player1.cards);
+	// console.log(player1.cards);
 </script>
 
 <body class="disBox forplayer1">
-  <!-- <div><img class="startCard" src={cardsImgs[4]} alt="startCard" /></div> -->
-  <div class="backContain" style="width:100%; height:100% z-index: 0; ">
-    {#each player2.cards as card, i}
-      <!-- svelte-ignore a11y-img-redundant-alt -->
-      <!-- svelte-ignore a11y-invalid-attribute -->
-      <!-- svelte-ignore a11y-missing-content -->
-      <a href="#">
-        <img
-          style="width: {120 + i * 0.5}px; margin-bottom: 20px; order: 2 "
-          class="cardImages"
-          src={cardsImgs[card.cardString]}
-          alt="Card image"
-        />
-      </a>
-      <!-- <h1 style="color: beige;">bot</h1> -->
-    {/each}
-  </div>
+	<!-- <div><img class="startCard" src={cardsImgs[4]} alt="startCard" /></div> -->
+	<div class="backContain" style="width:100%; height:100% z-index: 0; ">
+		{#each player2.cards as card, i}
+			<!-- svelte-ignore a11y-img-redundant-alt -->
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<!-- svelte-ignore a11y-missing-content -->
+			<a href="#">
+				<img
+					style="width: {120 + i * 0.5}px; margin-bottom: 20px; order: 2 "
+					class="cardImages"
+					src={cardsImgs[card.cardString]}
+					alt="Card image"
+				/>
+			</a>
+			<!-- <h1 style="color: beige;">bot</h1> -->
+		{/each}
+	</div>
 
-  <div
-    class="backContain"
-    style="width:100%; height:100% z-index: 10; margin-top: 200px "
-  >
-    {#each player1.cards as card, i}
-      <!-- svelte-ignore a11y-img-redundant-alt -->
-      <!-- svelte-ignore a11y-invalid-attribute -->
-      <!-- svelte-ignore a11y-missing-content -->
-      <a on:click={(event) => handleClick(player1.cards, i)} href="#">
-        <img
-          style="width: {125 + i * 0.5}px"
-          class="cardImages"
-          src={cardsImgs[card.cardString]}
-          alt="Card image"
-        />
-      </a>
-      <!-- <h1 style="color: aliceblue;">player</h1> -->
-    {/each}
-  </div>
+	<div
+		class="backContain"
+		style="width:100%; height:100% z-index: 10; margin-top: 200px "
+	>
+		{#each player1.cards as card, i}
+			<!-- svelte-ignore a11y-img-redundant-alt -->
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<!-- svelte-ignore a11y-missing-content -->
+			<a on:click={(event) => handleClick(player1.cards, i)} href="#">
+				<img
+					style="width: {125 + i * 0.5}px"
+					class="cardImages"
+					src={cardsImgs[card.cardString]}
+					alt="Card image"
+				/>
+			</a>
+			<!-- <h1 style="color: aliceblue;">player</h1> -->
+		{/each}
+	</div>
 
-  <div class="container" style="display: flex; gap: 30em">
-    <img class="backHand" src={cardBack} alt="DECK" />
-    <a href="#" style="color: white; font-size: 30px;">Uno Button</a>
-  </div>
+	<div class="container" style="display: flex; gap: 30em">
+		<img class="backHand" src={cardBack} alt="DECK" />
+		<a href="#" style="color: white; font-size: 30px;">Uno Button</a>
+	</div>
 </body>
 
 <style>
-  body {
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    height: 98vh;
-    background-image: url("$lib/woodback.png");
-    background-color: rgb(255, 221, 0);
-  }
+	body {
+		overflow: hidden;
+		width: 100%;
+		margin: 0 auto;
+		height: 98vh;
+		background-image: url("$lib/woodback.png");
+		background-color: rgb(255, 221, 0);
+	}
 
-  .disBox {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: column;
-    gap: 35em;
-  }
+	.disBox {
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		flex-direction: column;
+		gap: 35em;
+	}
 
-  .cardImages {
-    transition: all 0.6s ease-in-out;
-  }
+	.cardImages {
+		transition: all 0.6s ease-in-out;
+	}
 
-  .cardImages:hover {
-    margin-bottom: 25px;
-    height: 190px;
-  }
+	.cardImages:hover {
+		margin-bottom: 25px;
+		height: 190px;
+	}
 
-  .backContain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: rgb(0, 0, 0); */
-  }
+	.backContain {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/* background-color: rgb(0, 0, 0); */
+	}
 
-  .container {
-    position: absolute;
-    left: 650px;
-    bottom: 500px;
-  }
+	.container {
+		position: absolute;
+		left: 650px;
+		bottom: 500px;
+	}
 
-  .backHand {
-    /* position: absolute; */
-    width: 120px;
-  }
+	.backHand {
+		/* position: absolute; */
+		width: 120px;
+	}
 </style>
