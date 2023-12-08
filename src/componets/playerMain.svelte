@@ -21,6 +21,9 @@
       console.log(game.players[player]);
       game.botPlay(0);
       game = game;
+      if (game.isDone()) {
+        window.location.href = "/Winner"
+      }
     } else {
       console.log("Not Valid Input For Uno");
     }
